@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <a routerBack></a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="card mt-3">
+        <div class="card-body" *ngIf="movie">
+          <h5 class="card-title">{{ movie.original_title }}</h5>
+          <p class="card-text" [innerHtml]="movie.overview"></p>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Rating: {{ movie.vote_average }}</li>
+            <li class="list-group-item">Runtime: {{ movie.runtime }} min</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ol>
+  <li *ngFor="let comment of comments">
+    <h5>Author: {{ comment.author }}</h5>
+    <p>{{ comment.content }}</p>
+  </li>
+</ol>
+
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <form action="" class="">
+        <div class="form-group">
+          <label for="author">Author name</label>
+          <input [(ngModel)]="newComment.author" type="text" name="author" class="form-control" id="author" placeholder="Author">
+        </div>
+        <div class="form-group">
+          <label for="content">Comment content</label>
+          <textarea [(ngModel)]="newComment.content" name="content" cols="30" class="form-control" rows="3" id="content" placeholder="Content"></textarea>
+        </div>
+        <button (click)="submitComment()" type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
